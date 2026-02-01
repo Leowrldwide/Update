@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Everyday Valentine ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e9);
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      width: 320px;
+    }
+
+    h1 {
+      color: #e63946;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      height: 100px;
+    }
+
+    button {
+      padding: 12px 22px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #e63946;
+      color: white;
+    }
+
+    #no {
+      background: #adb5bd;
+      position: absolute;
+      left: 160px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Fimidara will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+      <button id="yes">Yes ❤️</button>
+      <button id="no">No 😒</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const area = document.querySelector(".buttons");
+
+    noBtn.addEventListener("mouseover", () => {
+      const maxX = area.offsetWidth - noBtn.offsetWidth;
+      const maxY = area.offsetHeight - noBtn.offsetHeight;
+
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      window.location.href = "yes.html";
+    });
+  </script>
+</body>
+</html>

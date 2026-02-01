@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>You Said Yes 💐</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(135deg, #fff0f6, #ffe6ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      text-align: center;
+      max-width: 420px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+      z-index: 2;
+    }
+
+    h1 {
+      color: #e63946;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .ask-btn {
+      margin-top: 25px;
+      padding: 14px 26px;
+      border-radius: 30px;
+      border: none;
+      background: #e63946;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .flowers {
+      position: absolute;
+      font-size: 40px;
+      opacity: 0.3;
+      animation: float 12s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-120vh); }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Flowers -->
+  <div class="flowers" style="left:10%">💦</div>
+  <div class="flowers" style="left:30%">🍆</div>
+  <div class="flowers" style="left:50%">💦</div>
+  <div class="flowers" style="left:70%">🍆</div>
+  <div class="flowers" style="left:90%">💦</div>
+
+  <!-- Message -->
+  <div class="card">
+    <h1>Good Girl</h1>
+    <p>
+      Since you said yes <br>
+      <strong>like you had a choice</strong> 😂💔
+      <br><br>
+      We should go on a date <strong>14-02-2026?</strong> 🍆🍆
+    </p>
+
+    <button class="ask-btn" onclick="askMe()">
+      Answer for dm abeg 😏
+    </button>
+  </div>
+
+  <!-- Confetti -->
+  <canvas id="confetti"></canvas>
+
+  <script>
+    function askMe() {
+      alert("I don taya biko. Follow me talk for dm. I'm so childish😂😂😂");
+    }
+
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confetti = Array.from({length: 200}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 6 + 4,
+      d: Math.random() * 20,
+      color: `hsl(${Math.random() * 360},70%,60%)`
+    }));
+
+    let angle = 0;
+
+    function draw() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      angle += 0.01;
+
+      confetti.forEach(c => {
+        ctx.beginPath();
+        ctx.fillStyle = c.color;
+        ctx.arc(c.x, c.y, c.r, 0, Math.PI*2);
+        ctx.fill();
+
+        c.y += Math.cos(angle + c.d) + 2;
+        c.x += Math.sin(angle);
+
+        if (c.y > canvas.height) {
+          c.y = -10;
+          c.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    setInterval(draw, 20);
+  </script>
+
+</body>
+</html>
